@@ -1,5 +1,6 @@
 ﻿using System;
-//gittest
+using System.Text.RegularExpressions;
+
 //桁数表示も
 namespace Dentaku
 {
@@ -31,11 +32,10 @@ namespace Dentaku
             {
                 
 
-                    if (inputArray.Length > 3)
+                    if (inputArray.Length > 2)
                     {
                         Array.Resize(ref inputArray, inputArray.Length + 1);
                         inputArray[inputArray.Length - 1] = Console.ReadLine();
-                        Console.Write("計算結果：");
                     }
                     else if (inputArray.Length < 3)
                     {
@@ -53,9 +53,11 @@ namespace Dentaku
 
 
                     decimal result = 0;
-                    Console.Write("計算結果：");
 
-                    if (inputArray.Length >= 3 && inputArray.Length % 3 == 0)
+
+                          
+                    if (inputArray.Length >= 3 &&
+                        Regex.IsMatch(inputArray[inputArray.Length - 1], "[0-9]"))
                     {
                         decimal inputNumber2 = decimal.Parse(inputArray[inputArray.Length - 1]);
                         switch (inputArray[inputArray.Length - 2])
@@ -81,7 +83,7 @@ namespace Dentaku
                                 break;
                         }
                     }
-                    //decimal型の桁を取得する為変換処理
+                    
                     Console.Read();
                 }
             }
