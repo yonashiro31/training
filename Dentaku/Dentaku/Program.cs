@@ -1,5 +1,5 @@
 ﻿using System;
-
+//gittest
 //桁数表示も
 namespace Dentaku
 {
