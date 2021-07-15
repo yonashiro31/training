@@ -41,7 +41,7 @@ namespace Dentaku
         /// <remarks>
         /// Operators.csで定義した定数を呼び出す
         /// </remarks>
-        public static void OperaterCheck(string checkOperater)
+        public static void OperatorCheck(string checkOperater)
         {
             if (checkOperater == Operator.ADD || checkOperater == Operator.SUB
                 || checkOperater == Operator.MUL || checkOperater == Operator.DIV)
