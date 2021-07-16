@@ -19,10 +19,14 @@ namespace Dentaku
         {
             Console.WriteLine("＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
             Console.WriteLine("下記の例を参考に入力してください");
-            Console.WriteLine("例：1 + 1");
-            Console.WriteLine("　  1[Enter] +[Enter] 1[Enter]");
+            Console.WriteLine("例　：1 + 1");
+            Console.WriteLine("例2 ：1[Enter] +[Enter] 1[Enter]");
             Console.WriteLine();
-            Console.WriteLine("(演算子は+、-、*、/を利用して下さい。)");
+            Console.WriteLine();
+            Console.WriteLine("・演算子は+、-、*、/を利用して下さい。)");
+            Console.WriteLine("・例2の場合は続けて演算子と数値を入力する事で、");
+            Console.WriteLine("　計算を続行することができます。計算を終了させ");
+            Console.WriteLine("　たい場合は「break」と入力してください。");
             Console.WriteLine("＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
         }
         public static void DisplayMessage(int i)
@@ -40,6 +44,9 @@ namespace Dentaku
                     break;
                 case 4:
                     Console.WriteLine("数値が未入力です");
+                    break;
+                case 5:
+                    Console.WriteLine("プログラムを終了します。");
                     break;
             }
         }

@@ -28,13 +28,25 @@ namespace Dentaku
             Check.InputCheck(inputArray[0]);
 
             decimal inputNumber1 = decimal.Parse(inputArray[0]);
+            int i = 0;
             while (true)
             {
+                i++;
                 //二度目以降の計算入力受付
-                if (inputArray.Length > 2)
+                if (i > 1)
                 {
                     Array.Resize(ref inputArray, inputArray.Length + 1);
-                    inputArray[inputArray.Length - 1] = Console.ReadLine();
+                    inputArray[i + 1] = Console.ReadLine();
+
+                    Check.Tes(i,inputArray);
+
+                    if (inputArray[i + 1] == "break")
+                    {
+                        Message.DisplayMessage(5);
+                        break;
+                    }
+
+                   
                 }
                 else if (inputArray.Length < 3)
                 {
@@ -47,26 +59,13 @@ namespace Dentaku
                     inputArray[inputArray.Length - 1] = Console.ReadLine();
                     Check.InputCheck(inputArray[2]);
                 }
-                //演算子チェック　if以外の記述方法模索中
-                if (inputArray.Length % 2 == 0)
-                {
-                    Check.OperatorCheck(inputArray[inputArray.Length - 1]);
-                }
-                else if (inputArray.Length % 2 == 1)
-                {
-                    Check.InputCheck(inputArray[inputArray.Length - 1]);
-                }
-                //ループ脱却処理　他の記述方法に変える予定
-                if (inputArray[inputArray.Length - 1] == "=")
-                {
-                    break;
-                }
+
 
                 if (inputArray.Length >= 3 && true ==
-                    Regex.IsMatch(inputArray[inputArray.Length - 1], "[0-9]"))
+                    Regex.IsMatch(inputArray[i + 1], "[0-9]"))
                 {
-                    decimal inputNumber2 = decimal.Parse(inputArray[inputArray.Length - 1]);
-                    switch (inputArray[inputArray.Length - 2])
+                    decimal inputNumber2 = decimal.Parse(inputArray[i + 1]);
+                    switch (inputArray[i])
                     {
                         case Operator.ADD:
                             inputNumber1 = decimal.Add(inputNumber1, inputNumber2);

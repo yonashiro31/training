@@ -13,6 +13,7 @@ namespace Dentaku
         public const string SUB = "-";
         public const string MUL = "*";
         public const string DIV = "/";
+        public const string EQUAL = "=";
     }
         
     

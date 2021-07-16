@@ -18,7 +18,7 @@ namespace Dentaku
         /// </remarks>
         public static void InputCheck(string checkNumber)
         {
-            bool result = Regex.IsMatch(checkNumber, "[^0-9,.]");
+            bool result = Regex.IsMatch(checkNumber, "[^0-9 | .]");
             if (string.IsNullOrEmpty(checkNumber))
             {
                 Message.DisplayMessage(4);
@@ -41,10 +41,10 @@ namespace Dentaku
         /// <remarks>
         /// Operators.csで定義した定数を呼び出す
         /// </remarks>
-        public static void OperatorCheck(string checkOperater)
+        public static void OperatorCheck(string checkOperator)
         {
-            if (checkOperater == Operator.ADD || checkOperater == Operator.SUB
-                || checkOperater == Operator.MUL || checkOperater == Operator.DIV)
+            if (checkOperator == Operator.ADD || checkOperator == Operator.SUB
+                || checkOperator == Operator.MUL || checkOperator == Operator.DIV)
             {
             }
             else
@@ -67,6 +67,19 @@ namespace Dentaku
                 Message.DisplayMessage(2);
                 Console.Read();
                 Environment.Exit(0);
+            }
+        }
+        //メソッド名変更予定
+        public static void Tes(int i, string[] inputArray)
+        {
+            switch (i % 2)
+            {
+                case 0:
+                    OperatorCheck(inputArray[i + 1]);
+                    break;
+                case 1:
+                    InputCheck(inputArray[i + 1]);
+                    break;
             }
         }
     }
