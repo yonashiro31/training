@@ -16,7 +16,7 @@ namespace Dentaku
         /// <remarks>
         /// Message.csから出力表示を呼び出す
         /// </remarks>
-        public static void InputCheck(string checkNumber)
+        public static void ValueCheck(string checkNumber)
         {
             bool result = Regex.IsMatch(checkNumber, "[^0-9 | .]");
             if (string.IsNullOrEmpty(checkNumber))
@@ -35,6 +35,7 @@ namespace Dentaku
             {
             }
         }
+
         /// <summary>
         /// 演算子が適切であるかの判定を行うメソッド
         /// </summary>
@@ -54,6 +55,7 @@ namespace Dentaku
                 Environment.Exit(0);
             }
         }
+
         /// <summary>
         /// 入力値の判定を行うメソッド
         /// </summary>
@@ -69,16 +71,22 @@ namespace Dentaku
                 Environment.Exit(0);
             }
         }
-        //メソッド名変更予定
-        public static void Tes(int i, string[] inputArray)
+
+        /// <summary>
+        /// Program.csにおいて入力値が演算子か数値化を判別するメソッド
+        /// </summary>
+        /// <remarks>
+        /// 同クラスのOperatorCheckに処理を渡す
+        /// </remarks>
+        public static void ValueDistinguish(int loopCounter, string[] inputArray)
         {
-            switch (i % 2)
+            switch (loopCounter % 2)
             {
                 case 0:
-                    OperatorCheck(inputArray[i + 1]);
+                    OperatorCheck(inputArray[loopCounter + 1]);
                     break;
                 case 1:
-                    InputCheck(inputArray[i + 1]);
+                    ValueCheck(inputArray[loopCounter + 1]);
                     break;
             }
         }

@@ -5,7 +5,7 @@ namespace Dentaku
     /// 演算子の定数定義を行うクラス
     /// </summary>
     /// <remarks>
-    /// 四則演算に対応する
+    /// 加算はADD、減算はSUB、乗算はMUL、除算はDIV
     /// </remarks>
     public class Operator
     {
@@ -13,8 +13,5 @@ namespace Dentaku
         public const string SUB = "-";
         public const string MUL = "*";
         public const string DIV = "/";
-        public const string EQUAL = "=";
-    }
-        
-    
+    }  
 }

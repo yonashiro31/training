@@ -11,11 +11,11 @@ namespace Dentaku
     class Message
     {
         /// <summary>
-        /// 出力するメッセージの呼び出し元になる
+        /// メッセージを出力するメソッド
         /// </summary>
         /// <remarks>
         /// switch文で出力メッセージ内容を分岐させる
-        public static void StartDisplay()
+        public static void InitialDisplay()
         {
             Console.WriteLine("＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
             Console.WriteLine("下記の例を参考に入力してください");
@@ -23,12 +23,19 @@ namespace Dentaku
             Console.WriteLine("例2 ：1[Enter] +[Enter] 1[Enter]");
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("・演算子は+、-、*、/を利用して下さい。)");
+            Console.WriteLine("・演算子は+、-、*、/を利用して下さい。");
             Console.WriteLine("・例2の場合は続けて演算子と数値を入力する事で、");
             Console.WriteLine("　計算を続行することができます。計算を終了させ");
             Console.WriteLine("　たい場合は「break」と入力してください。");
             Console.WriteLine("＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
         }
+        /// <summary>
+        /// メッセージを出力するメソッド
+        /// </summary>
+        /// <remarks>
+        /// Program.csからの引数に応じて出力メッセージを分岐させる
+        /// </remarks>
+        /// <param name="i">出力分岐判断をする為の数値</param>
         public static void DisplayMessage(int i)
         {
             switch (i)

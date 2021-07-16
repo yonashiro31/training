@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-//桁数表示も
 namespace Dentaku
 {
     /// <summary>
@@ -21,68 +20,67 @@ namespace Dentaku
         /// <param name="args">引数</param>
         static void Main(string[] args)
         {
-            Message.StartDisplay();
+            Message.InitialDisplay();
             var formula = Console.ReadLine();
             //一列入力時の処理
-            string[] inputArray = formula.Split(' ');
-            Check.InputCheck(inputArray[0]);
+            string[] EnteredAllValue = formula.Split(' ');
+            Check.ValueCheck(EnteredAllValue[0]);
 
-            decimal inputNumber1 = decimal.Parse(inputArray[0]);
-            int i = 0;
+            decimal value1AndResult = decimal.Parse(EnteredAllValue[0]);
+            int loopCounter = 0;
             while (true)
             {
-                i++;
+                loopCounter++;
                 //二度目以降の計算入力受付
-                if (i > 1)
+                if (loopCounter > 1)
                 {
-                    Array.Resize(ref inputArray, inputArray.Length + 1);
-                    inputArray[i + 1] = Console.ReadLine();
 
-                    Check.Tes(i,inputArray);
+                    Array.Resize(ref EnteredAllValue, EnteredAllValue.Length + 1);
+                    EnteredAllValue[loopCounter + 1] = Console.ReadLine();
 
-                    if (inputArray[i + 1] == "break")
+                    if (EnteredAllValue[loopCounter + 1] == "break")
                     {
                         Message.DisplayMessage(5);
                         break;
                     }
 
-                   
+                    Check.ValueDistinguish(loopCounter,EnteredAllValue);
+            
                 }
-                else if (inputArray.Length < 3)
+                else if (EnteredAllValue.Length < 3)
                 {
                     //配列の追加
                     //入力値読み取り
-                    Array.Resize(ref inputArray, inputArray.Length + 1);
-                    inputArray[inputArray.Length - 1] = Console.ReadLine();
-                    Check.OperatorCheck(inputArray[1]);
-                    Array.Resize(ref inputArray, inputArray.Length + 1);
-                    inputArray[inputArray.Length - 1] = Console.ReadLine();
-                    Check.InputCheck(inputArray[2]);
+                    Array.Resize(ref EnteredAllValue, EnteredAllValue.Length + 1);
+                    EnteredAllValue[EnteredAllValue.Length - 1] = Console.ReadLine();
+                    Check.OperatorCheck(EnteredAllValue[1]);
+                    Array.Resize(ref EnteredAllValue, EnteredAllValue.Length + 1);
+                    EnteredAllValue[EnteredAllValue.Length - 1] = Console.ReadLine();
+                    Check.ValueCheck(EnteredAllValue[2]);
                 }
 
-
-                if (inputArray.Length >= 3 && true ==
-                    Regex.IsMatch(inputArray[i + 1], "[0-9]"))
+                if (EnteredAllValue.Length >= 3 && true ==
+                    Regex.IsMatch(EnteredAllValue[loopCounter + 1], "[0-9]"))
                 {
-                    decimal inputNumber2 = decimal.Parse(inputArray[i + 1]);
-                    switch (inputArray[i])
+                    decimal enteredValue2 = decimal.Parse(EnteredAllValue[loopCounter + 1]);
+                    switch (EnteredAllValue[loopCounter])
                     {
                         case Operator.ADD:
-                            inputNumber1 = decimal.Add(inputNumber1, inputNumber2);
-                            Console.WriteLine(inputNumber1);
+                            value1AndResult = decimal.Add(value1AndResult, enteredValue2);
+                            Console.WriteLine(value1AndResult);
                             break;
                         case Operator.SUB:
-                            inputNumber1 = decimal.Subtract(inputNumber1, inputNumber2);
-                            Console.WriteLine(inputNumber1);
+                            value1AndResult = decimal.Subtract(value1AndResult, enteredValue2);
+                            Console.WriteLine(value1AndResult);
                             break;
                         case Operator.MUL:
-                            inputNumber1 = decimal.Multiply(inputNumber1, inputNumber2);
-                            Console.WriteLine(inputNumber1);
+                            value1AndResult = decimal.Multiply(value1AndResult, enteredValue2);
+                            Console.WriteLine(value1AndResult);
                             break;
                         case Operator.DIV:
-                            Check.ZeroDiv(inputNumber2);
-                            inputNumber1 = decimal.Divide(inputNumber1, inputNumber2);
-                            Console.WriteLine(inputNumber1);
+                            Check.ZeroDiv(enteredValue2);
+                            value1AndResult = decimal.Divide(value1AndResult, enteredValue2);
+                            Console.WriteLine(value1AndResult);
                             break;
                         default:
                             break;
