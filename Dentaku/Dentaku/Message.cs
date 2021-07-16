@@ -15,6 +15,7 @@ namespace Dentaku
         /// </summary>
         /// <remarks>
         /// switch文で出力メッセージ内容を分岐させる
+        /// </remarks>>
         public static void InitialDisplay()
         {
             Console.WriteLine("＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
@@ -35,10 +36,10 @@ namespace Dentaku
         /// <remarks>
         /// Program.csからの引数に応じて出力メッセージを分岐させる
         /// </remarks>
-        /// <param name="i">出力分岐判断をする為の数値</param>
-        public static void DisplayMessage(int i)
+        /// <param name="messageJudge">出力分岐判断をする為の数値</param>
+        public static void DisplayMessage(int messageJudge)
         {
-            switch (i)
+            switch (messageJudge)
             {
                 case 1:
                     Console.WriteLine("+、-、*、/を使用してください。");

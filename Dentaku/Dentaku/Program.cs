@@ -34,13 +34,12 @@ namespace Dentaku
                 //二度目以降の計算入力受付
                 if (loopCounter > 1)
                 {
-
                     Array.Resize(ref EnteredAllValue, EnteredAllValue.Length + 1);
                     EnteredAllValue[loopCounter + 1] = Console.ReadLine();
 
                     if (EnteredAllValue[loopCounter + 1] == "break")
                     {
-                        Message.DisplayMessage(5);
+                        Message.DisplayMessage(MessageJudge.BREAKJUDGE);
                         break;
                     }
 
@@ -59,7 +58,7 @@ namespace Dentaku
                     Check.ValueCheck(EnteredAllValue[2]);
                 }
 
-                if (EnteredAllValue.Length >= 3 && true ==
+                if (EnteredAllValue.Length >= 3 && 
                     Regex.IsMatch(EnteredAllValue[loopCounter + 1], "[0-9]"))
                 {
                     decimal enteredValue2 = decimal.Parse(EnteredAllValue[loopCounter + 1]);

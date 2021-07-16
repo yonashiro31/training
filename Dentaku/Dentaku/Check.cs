@@ -16,23 +16,21 @@ namespace Dentaku
         /// <remarks>
         /// Message.csから出力表示を呼び出す
         /// </remarks>
+        /// <param name="checkNumber">数値の入力が想定される引数</param>
         public static void ValueCheck(string checkNumber)
         {
             bool result = Regex.IsMatch(checkNumber, "[^0-9 | .]");
             if (string.IsNullOrEmpty(checkNumber))
             {
-                Message.DisplayMessage(4);
+                Message.DisplayMessage(MessageJudge.NULLJUDGE);
                 Console.Read();
                 Environment.Exit(0);
             }
             else if (result)
             {
-                Message.DisplayMessage(3);
+                Message.DisplayMessage(MessageJudge.NUMBERJUDGE);
                 Console.Read();
                 Environment.Exit(0);
-            }
-            else
-            {
             }
         }
 
@@ -42,6 +40,7 @@ namespace Dentaku
         /// <remarks>
         /// Operators.csで定義した定数を呼び出す
         /// </remarks>
+        /// <param name="checkOperator">演算子の入力が想定される引数</param>
         public static void OperatorCheck(string checkOperator)
         {
             if (checkOperator == Operator.ADD || checkOperator == Operator.SUB
@@ -50,7 +49,7 @@ namespace Dentaku
             }
             else
             {
-                Message.DisplayMessage(1);
+                Message.DisplayMessage(MessageJudge.OPERATORJUDGE);
                 Console.Read();
                 Environment.Exit(0);
             }
@@ -62,11 +61,12 @@ namespace Dentaku
         /// <remarks>
         /// 0で割っているかどうかの判定に利用する
         /// </remarks>
+        /// <param name="checkNumber">数値の入力が想定される引数</param>
         public static void ZeroDiv(decimal checkNumber)
         {
             if (checkNumber == 0)
             {
-                Message.DisplayMessage(2);
+                Message.DisplayMessage(MessageJudge.DIVJUDGE);
                 Console.Read();
                 Environment.Exit(0);
             }
@@ -78,6 +78,8 @@ namespace Dentaku
         /// <remarks>
         /// 同クラスのOperatorCheckに処理を渡す
         /// </remarks>
+        /// <param name="loopCountor">繰り返し処理をカウントする引数</param>
+        /// <param name="inputArray">入力値を格納する</param>
         public static void ValueDistinguish(int loopCounter, string[] inputArray)
         {
             switch (loopCounter % 2)
