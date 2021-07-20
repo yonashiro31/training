@@ -44,6 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Check.cs" />
+    <Compile Include="Logic\Addlogic.cs" />
+    <Compile Include="Logic\DivLogic.cs" />
+    <Compile Include="Logic\MulLogic.cs" />
+    <Compile Include="Logic\SubLogic.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MessageJudge.cs" />
     <Compile Include="Operator.cs" />

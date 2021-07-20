@@ -80,15 +80,15 @@ namespace Dentaku
         /// </remarks>
         /// <param name="loopCountor">繰り返し処理をカウントする引数</param>
         /// <param name="inputArray">入力値を格納する</param>
-        public static void ValueDistinguish(int loopCounter, string[] inputArray)
+        public static void ValueDistinguish(int loopCounter, string inputArray)
         {
             switch (loopCounter % 2)
             {
                 case 0:
-                    OperatorCheck(inputArray[loopCounter + 1]);
+                    OperatorCheck(inputArray);
                     break;
                 case 1:
-                    ValueCheck(inputArray[loopCounter + 1]);
+                    ValueCheck(inputArray);
                     break;
             }
         }
