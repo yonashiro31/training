@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Check.cs" />
-    <Compile Include="Logic\Addlogic.cs" />
+    <Compile Include="Compute.cs" />
+    <Compile Include="LineFormula.cs" />
+    <Compile Include="Logic\AddLogic.cs" />
     <Compile Include="Logic\DivLogic.cs" />
     <Compile Include="Logic\MulLogic.cs" />
     <Compile Include="Logic\SubLogic.cs" />

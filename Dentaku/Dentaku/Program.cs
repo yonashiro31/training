@@ -4,12 +4,12 @@ using System.Text.RegularExpressions;
 namespace Dentaku
 {
     /// <summary>
-    /// 入力値の計算結果を返すクラス
+    /// 電卓メインクラス
     /// </summary>
     /// <remarks>
     /// 数値演算子を個別で入力した場合にも対応する
     /// </remarks>
-    class Program
+    public class Program
     {
         /// <summary>
         /// 四則演算を行う
@@ -20,65 +20,52 @@ namespace Dentaku
         /// <param name="args">引数</param>
         static void Main(string[] args)
         {
-            Message.InitialDisplay();
-            var inputValueAndResult = Console.ReadLine();
-            //一列入力時の処理
+            LineFormula lineFormula = new LineFormula();
+            Compute compute = new Compute();
+            Message message = new Message();
+            Check check = new Check();
+            
+            //初期表示
+            message.InitialDisplay();
+            string inputValueAndResult = Console.ReadLine();
 
-            Check.ValueCheck(inputValueAndResult);
-
-            decimal value1AndResult = decimal.Parse(inputValueAndResult);
-            int loopCounter = 0;
-
-            //dowhile文に変更予定
-            while (true)
+            string[] LineFormulaValue = inputValueAndResult.Split(' ', '　');
+            var valueCount = LineFormulaValue.Length;
+   
+            if (valueCount < 3)
             {
-                loopCounter++;
-                //入力受付
-                var enteredOpe = Console.ReadLine();
-                var test = Console.ReadLine();
-                Check.ValueCheck(test);
-                //上記dowhile変更後if削除、内部処理はwhile実行後に移動
-                if (test == "break")
+                check.ValueCheck(inputValueAndResult);
+
+                decimal value1AndResult = decimal.Parse(inputValueAndResult);
+                int loopCounter = 0;
+
+                // dowhile文に変更予定
+                while (true)
                 {
-                    Message.DisplayMessage(MessageJudge.BREAKJUDGE);
-                    break;
-                }
-
-                Check.ValueDistinguish(loopCounter, test);
-
-
-                Check.OperatorCheck(enteredOpe);
-                //配列の追加
-                //入力値読み取り
-
-
-                if (
-                    Regex.IsMatch(test, "[0-9]"))
-                {
-                    decimal enteredValue2 = decimal.Parse(test);
-                    switch (enteredOpe)
+                    loopCounter++;
+                    // 入力受付
+                    var enteredOpe = Console.ReadLine();
+                    var testValue = Console.ReadLine();
+                    check.ValueCheck(testValue);
+                    // 上記dowhile変更後if削除、内部処理はwhile実行後に移動
+                    if (testValue == "break")
                     {
-                        case Operator.ADD:
-                            value1AndResult = decimal.Add(value1AndResult, enteredValue2);
-                            Console.WriteLine(value1AndResult);
-                            break;
-                        case Operator.SUB:
-                            value1AndResult = decimal.Subtract(value1AndResult, enteredValue2);
-                            Console.WriteLine(value1AndResult);
-                            break;
-                        case Operator.MUL:
-                            value1AndResult = decimal.Multiply(value1AndResult, enteredValue2);
-                            Console.WriteLine(value1AndResult);
-                            break;
-                        case Operator.DIV:
-                            Check.ZeroDiv(enteredValue2);
-                            value1AndResult = decimal.Divide(value1AndResult, enteredValue2);
-                            Console.WriteLine(value1AndResult);
-                            break;
-                        default:
-                            break;
+                        message.DisplayMessage(MessageJudge.BREAKJUDGE);
+                        break;
                     }
+                    check.ValueDistinguish(loopCounter, testValue);
+                    check.OperatorCheck(enteredOpe);
+                    // 配列の追加
+                    // 入力値読み取り
+                    Regex.IsMatch(testValue, "[0-9]");
+                    decimal enteredValue2 = decimal.Parse(testValue);
+                    compute.SisokuCompute(value1AndResult, enteredOpe, enteredValue2);
                 }
+            }
+            else
+            {          
+                // 一列入力時の処理
+                lineFormula.LineCompute(LineFormulaValue);
             }
             Console.Read();
         }

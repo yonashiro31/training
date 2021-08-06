@@ -10,6 +10,7 @@ namespace Dentaku
     /// </remarks>
     class Check
     {
+        Message message = new Message();
         /// <summary>
         /// 入力値が空白、または数字以外かの判定を行うメソッド
         /// </summary>
@@ -17,18 +18,18 @@ namespace Dentaku
         /// Message.csから出力表示を呼び出す
         /// </remarks>
         /// <param name="checkNumber">数値の入力が想定される引数</param>
-        public static void ValueCheck(string checkNumber)
+        public void ValueCheck(string checkNumber)
         {
             bool result = Regex.IsMatch(checkNumber, "[^0-9 | .]");
             if (string.IsNullOrEmpty(checkNumber))
             {
-                Message.DisplayMessage(MessageJudge.NULLJUDGE);
+                message.DisplayMessage(MessageJudge.NULLJUDGE);
                 Console.Read();
                 Environment.Exit(0);
             }
             else if (result)
             {
-                Message.DisplayMessage(MessageJudge.NUMBERJUDGE);
+                message.DisplayMessage(MessageJudge.NUMBERJUDGE);
                 Console.Read();
                 Environment.Exit(0);
             }
@@ -41,7 +42,7 @@ namespace Dentaku
         /// Operators.csで定義した定数を呼び出す
         /// </remarks>
         /// <param name="checkOperator">演算子の入力が想定される引数</param>
-        public static void OperatorCheck(string checkOperator)
+        public void OperatorCheck(string checkOperator)
         {
             if (checkOperator == Operator.ADD || checkOperator == Operator.SUB
                 || checkOperator == Operator.MUL || checkOperator == Operator.DIV)
@@ -49,7 +50,7 @@ namespace Dentaku
             }
             else
             {
-                Message.DisplayMessage(MessageJudge.OPERATORJUDGE);
+                message.DisplayMessage(MessageJudge.OPERATORJUDGE);
                 Console.Read();
                 Environment.Exit(0);
             }
@@ -62,11 +63,11 @@ namespace Dentaku
         /// 0で割っているかどうかの判定に利用する
         /// </remarks>
         /// <param name="checkNumber">数値の入力が想定される引数</param>
-        public static void ZeroDiv(decimal checkNumber)
+        public void ZeroDiv(decimal checkNumber)
         {
             if (checkNumber == 0)
             {
-                Message.DisplayMessage(MessageJudge.DIVJUDGE);
+                message.DisplayMessage(MessageJudge.DIVJUDGE);
                 Console.Read();
                 Environment.Exit(0);
             }
@@ -80,7 +81,7 @@ namespace Dentaku
         /// </remarks>
         /// <param name="loopCountor">繰り返し処理をカウントする引数</param>
         /// <param name="inputArray">入力値を格納する</param>
-        public static void ValueDistinguish(int loopCounter, string inputArray)
+        public void ValueDistinguish(int loopCounter, string inputArray)
         {
             switch (loopCounter % 2)
             {

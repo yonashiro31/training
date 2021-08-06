@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Dentaku.Logic
 {
-    class Addlogic
+    class AddLogic
     {
+        public decimal Add(decimal value1,decimal value2) {
+          return  decimal.Add(value1, value2);
+                }
     }
 }
